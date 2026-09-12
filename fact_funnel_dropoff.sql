@@ -8,11 +8,11 @@ WITH session_steps AS (
     MAX(is_cart_add) AS added_to_cart,
     MAX(is_purchase) AS purchased
   FROM `my-project-0526-502020.Look_Ticaret.stg_events`
-  GROUP BY event_date, traffic_source,event_id, session_id
+  GROUP BY event_date, traffic_source, session_id
 )
 SELECT
   event_date,
-  channel_name, 
+  channel_name,
   COUNT(session_id) AS total_sessions,
   COUNTIF(visited_product = 1) AS product_view_sessions,
   COUNTIF(added_to_cart = 1) AS cart_add_sessions,
